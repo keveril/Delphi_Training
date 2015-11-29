@@ -82,8 +82,8 @@
 			<DelphiCompile Include="$(MainSource)">
 				<MainSource>MainSource</MainSource>
 			</DelphiCompile>
-			<DCCReference Include="uMainForm.pas">
-				<Form>Form1</Form>
+			<DCCReference Include="uWidgetForm.pas">
+				<Form>WidgetForm</Form>
 				<FormType>dfm</FormType>
 			</DCCReference>
 			<DCCReference Include="uWidgetSubclass.pas"/>

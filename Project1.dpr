@@ -2,7 +2,7 @@ program Project1;
 
 uses
   Vcl.Forms,
-  uMainForm in 'uMainForm.pas' {Form1},
+  uWidgetForm in 'uWidgetForm.pas' {WidgetForm},
   uWidgetSubclass in 'uWidgetSubclass.pas',
   uWidget in 'uWidget.pas';
 
@@ -11,6 +11,6 @@ uses
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
-  Application.CreateForm(TForm1, TWidgetForm);
+  Application.CreateForm(TWidgetForm, WidgetForm);
   Application.Run;
 end.

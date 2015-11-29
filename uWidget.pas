@@ -8,36 +8,43 @@ uses
 
 type
   // An interface definition
-  IWidget = Interface
-  function GetAsString(): String;
+  IWidget = interface
+  function GetId: Integer;
+  function GetDescription: string;
+  procedure SetDescription(Value: String);
+  property ID: Integer read GetId;
+  property Description: string read GetDescription write SetDescription;
+
+  function GetAsString(): string;
   end;
 
-  // Define our  class
   TWidget = class abstract(TInterfacedObject, IWidget)
   private
     FId: Integer;
     FSize: Integer;
-    FDescription: String;
-    function GetAsString(): String;
+    FDescription: string;
+    function GetAsString(): string;
+    function GetId: Integer;
+    function GetDescription: string;
 
     procedure SetSize(Value: Integer);
-    procedure SetDescription(Value: String);
+    procedure SetDescription(Value: string);
 
   protected
-    function GetColor(): String; Virtual; Abstract;
+    function GetColor(): string; virtual; abstract;
 
   public
     // Widget properties
-    property ID: Integer read FId;
-    property Description: String read FDescription write SetDescription;
-    property AsString: String read GetAsString;
+    property ID: Integer read GetId;
+    property Description: string read GetDescription write SetDescription;
+    property AsString: string read GetAsString;
     property Color: string read GetColor;
     property Size: Integer read FSize write SetSize;
 
-    // TWidget constructor
-    constructor Create(parseID: Integer; parseDescription: String);  virtual;
+    constructor Create(parseID: Integer; parseDescription: string);  virtual;
   end;
 
+  TWidgetClass = class of TWidget;
   //TMyClassClass = class of TWidget;
 
 implementation
@@ -46,35 +53,39 @@ implementation
 // Create a TWidget object - parameterised version
 constructor TWidget.Create(parseID: Integer; parseDescription: string);
 begin
-  // Set the default variables
+  inherited Create;
   Size := 0;
   Description := parseDescription;
   FId := parseID;
 end;
 
 // Return AsString modified message
-function TWidget.GetAsString(): String;
+function TWidget.GetAsString(): string;
 begin
   Result := IntToStr(ID)
-   + #32 + Description
+   + ' ' + Description
     + #32 + Color
      + #32 + IntToStr(Size);
 end;
 
-procedure TWidget.SetSize(Value: Integer);
+function TWidget.GetDescription: string;
 begin
-  if Value <> FSize then
-  begin
-  FSize:=Value;
-  end;
+    Result:= FDescription;
 end;
 
-procedure TWidget.SetDescription(Value: String);
+function TWidget.GetId: Integer;
 begin
-  if Value <> FDescription then
-  begin
+    Result:= FId;
+end;
+
+procedure TWidget.SetSize(Value: Integer);
+begin
+  FSize:=Value;
+end;
+
+procedure TWidget.SetDescription(Value: string);
+begin
   FDescription:=Value;
-  end;
 end;
 
 end.

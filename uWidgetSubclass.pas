@@ -9,18 +9,16 @@ uses
 type
   TBlueWidget = class(TWidget)
   protected
-    function GetColor(): String; override;
+    function GetColor(): string; override;
   public
-    { Public declarations }
-    constructor Create(parseID: Integer; parseDescription: String);  override;
+    constructor Create(parseID: Integer; parseDescription: string);  override;
   end;
 
   TRedWidget = class(TWidget)
   protected
-    function GetColor(): String; override;
+    function GetColor(): string; override;
   public
-    { Public declarations }
-    constructor Create(parseID: Integer; parseDescription: String);  override;
+    constructor Create(parseID: Integer; parseDescription: string);  override;
   end;
 
 implementation
@@ -30,8 +28,7 @@ implementation
 constructor TBlueWidget.Create(parseID: Integer; parseDescription: string);
 begin
   // Call the parent constructor first
-  Inherited Create(parseID, parseDescription);
-  // Set the default variables
+  inherited Create(parseID, parseDescription);
   Size := 2;
 end;
 
@@ -44,8 +41,7 @@ end;
 constructor TRedWidget.Create(parseID: Integer; parseDescription: string);
 begin
   // Call the parent constructor first
-  Inherited Create(parseID, parseDescription);
-  // Set the default variables
+  inherited Create(parseID, parseDescription);
   Size := 0;
 end;
 
