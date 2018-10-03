@@ -50,4 +50,9 @@ begin
  Result:= 'Red';
 end;
 
+function TRedWidget.ChangeColorToGreen;
+begin
+ Result:= 'Green';
+end;
+
 end.
