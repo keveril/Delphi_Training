@@ -142,6 +142,7 @@ procedure TWidgetForm.WriteFromFile;
 var
   Widget: IWidget;
 begin
+	// Add header
   if(WidgetList.Count > 0) then
     ResultListBox.Items.Add('ID Description Color Size');
 
